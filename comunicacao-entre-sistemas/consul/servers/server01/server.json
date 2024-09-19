@@ -1,0 +1,10 @@
+{
+  "node_name": "consulserver01",
+  "server": true,
+  "bind_addr": "0.0.0.0",
+  "bootstrap_expect": 3,
+  "data_dir": "/tmp",
+  "ui": true,
+  "client_addr": "0.0.0.0",
+  "encrypt": "P2oso7NK3c0WSFVnlLWGC1kQkrrVUSiyrD2V4TfmABs="
+}

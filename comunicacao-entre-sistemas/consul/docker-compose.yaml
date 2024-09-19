@@ -1,0 +1,66 @@
+services:
+  consulserver01:
+    image: consul:1.10
+    container_name: consulserver01
+    hostname: consulserver01
+    volumes:
+      - ./servers/server01:/etc/consul.d
+    ports:
+      - "8500:8500"  # Consul UI
+      - "8600:8600/udp"  # DNS
+      - "8301:8301"
+    command: "agent -config-dir=/etc/consul.d"
+    networks:
+      - consulnet
+
+  consulserver02:
+    image: consul:1.10
+    container_name: consulserver02
+    hostname: consulserver02
+    volumes:
+      - ./servers/server02:/etc/consul.d
+    ports:
+      - "8501:8500"  # Consul UI
+      - "8601:8600/udp"  # DNS
+      - "8304:8301"
+    command: "agent -config-dir=/etc/consul.d"
+    networks:
+      - consulnet
+
+  consulserver03:
+    image: consul:1.10
+    container_name: consulserver03
+    hostname: consulserver03
+    volumes:
+      - ./servers/server03:/etc/consul.d
+    ports:
+      - "8502:8500"  # Consul UI
+      - "8602:8600/udp"  # DNS
+    command: "agent -config-dir=/etc/consul.d"
+    networks:
+      - consulnet
+
+  consulclient01:
+    image: consul:1.10
+    container_name: consulclient01
+    hostname: consulclient01
+    volumes:
+      - ./clients/consul01:/etc/consul.d
+    command: "agent -config-dir=/etc/consul.d"
+    networks:
+      - consulnet
+
+  consulclient02:
+    image: consul:1.10
+    container_name: consulclient02
+    hostname: consulclient02
+    volumes:
+      - ./clients/consul02:/etc/consul.d
+    command: "agent -config-dir=/etc/consul.d"
+    networks:
+      - consulnet
+
+networks:
+  consulnet:
+    driver: bridge
+    name: consulnet

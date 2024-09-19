@@ -1,0 +1,17 @@
+{
+  "node_name": "consulclient02",
+  "server": false,
+  "bind_addr": "0.0.0.0",
+  "data_dir": "/tmp",
+  "retry_join": [
+    "consulserver03"
+  ],
+  "client_addr": "0.0.0.0",
+  "service": {
+    "id": "nginx2",
+    "name": "nginx",
+    "tags": ["web"],
+    "port": 80
+  },
+  "encrypt": "P2oso7NK3c0WSFVnlLWGC1kQkrrVUSiyrD2V4TfmABs="
+}
